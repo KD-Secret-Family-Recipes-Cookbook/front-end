@@ -1,39 +1,37 @@
 import React from "react";
 import { axiosWithAuth } from '../components/utils/axiosWithAuth';
 import { ButtonStyling } from './Form';
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
 
-// const LoginContainer = styled.div`
-//     width: 60%;
-//     margin: auto;
-//     height: 8rem;
-//     border: 2px solid grey;
-//     border-radius: 10px;
-//     background-color: indianred;
-// `
 const InputContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80%;
-    margin: auto;
-    border: 2px solid grey;
-    border-radius: 10px;
-    background-color: indianred;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+  border: 2px solid grey;
+  border-radius: 10px;
+  background-color: indianred;
 `
 const InputStyling = styled.input`
-    width: 50%;
-    height: 2rem;
-    border-radius: 10px;
-    font-size: 1.6rem;
-    padding: 1.5%;
-    border: 1px solid grey;
-    outline: none;
-    margin-top: 3%;
+  width: 50%;
+  height: 2rem;
+  border-radius: 10px;
+  font-size: 1.6rem;
+  padding: 1.5%;
+  border: 1px solid grey;
+  outline: none;
+  margin-top: 3%;
   
-    &:focus {
-        outline: none;
-    }
+  &:focus {
+    outline: none;
+  }
+`
+const RegisterLinkStyling = styled.div`
+  font-size: 1.2rem;
+  margin-bottom: 3%;
+  outline: none;
 `
 
 class Login extends React.Component {
@@ -90,6 +88,9 @@ class Login extends React.Component {
                 onChange={this.handleChange}
               />
               <ButtonStyling>Log In</ButtonStyling>
+              <RegisterLinkStyling>
+                Not a member? <Link to='./register'>Register here!</Link>
+              </RegisterLinkStyling>
             </InputContainer>
           </form>
         </div>
