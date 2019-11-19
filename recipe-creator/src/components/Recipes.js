@@ -1,8 +1,10 @@
 import React from 'react';
+import Form from './Form.js';
 
 const Recipes = props => {
     return (
         <div className='recipe-list'>
+            <Form addNewRecipe={props.addNewRecipe} />
             {props.recipe.map(recItem => (
                 <div className='recipe-item' key={recItem.id}>
                     <h2>{recItem.name}</h2>
