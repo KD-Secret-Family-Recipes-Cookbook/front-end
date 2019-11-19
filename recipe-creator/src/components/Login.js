@@ -1,5 +1,40 @@
 import React from "react";
 import { axiosWithAuth } from '../components/utils/axiosWithAuth';
+import { ButtonStyling } from './Form';
+import styled from "styled-components";
+
+// const LoginContainer = styled.div`
+//     width: 60%;
+//     margin: auto;
+//     height: 8rem;
+//     border: 2px solid grey;
+//     border-radius: 10px;
+//     background-color: indianred;
+// `
+const InputContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+    border: 2px solid grey;
+    border-radius: 10px;
+    background-color: indianred;
+`
+const InputStyling = styled.input`
+    width: 50%;
+    height: 2rem;
+    border-radius: 10px;
+    font-size: 1.6rem;
+    padding: 1.5%;
+    border: 1px solid grey;
+    outline: none;
+    margin-top: 3%;
+  
+    &:focus {
+        outline: none;
+    }
+`
 
 class Login extends React.Component {
     state = {
@@ -39,19 +74,23 @@ class Login extends React.Component {
       return (
         <div>
           <form onSubmit={this.login}>
-            <input
-              type="text"
-              name="username"
-              value={this.state.credentials.username}
-              onChange={this.handleChange}
-            />
-            <input
-              type="password"
-              name="password"
-              value={this.state.credentials.password}
-              onChange={this.handleChange}
-            />
-            <button>Log In</button>
+            <InputContainer>
+              <InputStyling
+                type="text"
+                name="username"
+                placeholder='username'
+                value={this.state.credentials.username}
+                onChange={this.handleChange}
+              />
+              <InputStyling
+                type="password"
+                name="password"
+                placeholder='password'
+                value={this.state.credentials.password}
+                onChange={this.handleChange}
+              />
+              <ButtonStyling>Log In</ButtonStyling>
+            </InputContainer>
           </form>
         </div>
       );

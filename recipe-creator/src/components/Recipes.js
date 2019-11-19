@@ -27,10 +27,9 @@ const Recipes = props => {
             <ListStyle>
                 {props.recipe.map(recItem => (
                     <CardStyle key={recItem.id}>
-                        <h2>{recItem.name}</h2>
-                        <h3>{recItem.category}</h3>
-                        <h4>{recItem.source}</h4>
-                        <h4>{recItem.ingredients}</h4>
+                        <h2>{`${recItem.source}'s ${recItem.name}`}</h2>
+                        <p>{recItem.category}</p>
+                        <p>{recItem.ingredients}</p>
                         <p>{recItem.instructions}</p>
                     </CardStyle>
                 ))}

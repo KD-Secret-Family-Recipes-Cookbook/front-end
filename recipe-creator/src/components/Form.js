@@ -29,7 +29,6 @@ const RowOneStyling = styled.input`
   
     &:focus {
         outline: none;
-        border: 2px solid green;
     }
 `
 const RowTwoStyling = styled.textarea`
@@ -43,7 +42,6 @@ const RowTwoStyling = styled.textarea`
   
     &:focus {
         outline: none;
-        border: 2px solid green;
     }
 `
 const RowThreeStyling = styled.textarea`
@@ -57,7 +55,6 @@ const RowThreeStyling = styled.textarea`
   
     &:focus {
         outline: none;
-        border: 2px solid green;
     }
 `
 const InstructionStyling = styled.div`
@@ -68,7 +65,7 @@ const InstructionStyling = styled.div`
 const ButtonContainer = styled.div`
     text-align: center;
 `
-const ButtonStyling = styled.button`
+export const ButtonStyling = styled.button`
     text-align: center;
     background-color: #22283A;
     color: white;
