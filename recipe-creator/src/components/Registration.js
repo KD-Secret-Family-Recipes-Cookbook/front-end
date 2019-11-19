@@ -2,20 +2,40 @@ import React, { useState, useEffect } from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import { InputContainer } from './Login';
+import { ButtonStyling } from './Form';
+import styled from 'styled-components';
+
+const InputStyling = styled(Field)`
+  width: 50%;
+  height: 2rem;
+  border-radius: 10px;
+  font-size: 1.6rem;
+  padding: 1.5%;
+  border: 1px solid grey;
+  outline: none;
+  margin-top: 3%;
+  
+  &:focus {
+    outline: none;
+  }
+`
 
 function Registration({ values, errors, touched, status }) {
   return (
     <div className='registration-form'>
       <Form>
-        <Field type='text' name='username' placeholder='username' />
-        {touched.username && errors.username && <p>{errors.username}</p>}
-        <Field type='text' name='email' placeholder='Email' />
-        {touched.email && errors.email && <p>{errors.email}</p>}
-        <Field type='password' name='password' placeholder='Password' />
-        {touched.password && errors.password && <p>{errors.password}</p>}
-        <Field type='checkbox' name='terms' checked={values.terms} />
-        {touched.terms && errors.terms && <p>{errors.terms}</p>}
-        <button type='submit'>Register</button>
+        <InputContainer>
+          <InputStyling type='text' name='username' placeholder='username' autoComplete='off' />
+          {touched.username && errors.username && <p>{errors.username}</p>}
+          <InputStyling type='text' name='email' placeholder='Email' autoComplete='off' />
+          {touched.email && errors.email && <p>{errors.email}</p>}
+          <InputStyling type='password' name='password' placeholder='Password' autoComplete='off' />
+          {touched.password && errors.password && <p>{errors.password}</p>}
+          <InputStyling type='checkbox' name='terms' checked={values.terms} autoComplete='off'/>Terms of Service
+          {touched.terms && errors.terms && <p>{errors.terms}</p>}
+          <ButtonStyling type='submit'>Register</ButtonStyling>
+        </InputContainer>
       </Form>
     </div>
   )
@@ -42,7 +62,7 @@ const FormikRegistration = withFormik({
       .max(16, 'We understand you love security, but that password is way too long.')
       .required('A password is required. Please refrain from using your birthday.'),
     terms: Yup.bool()
-      .oneOf([true], 'Must Accept Terms of Service, even if you do not read them.')
+      .oneOf([true], 'Must Accept Terms of Service, even though you probably will not read it.')
   }),
 
   handleSubmit(values, { setStatus, resetForm }) {

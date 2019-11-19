@@ -1,10 +1,10 @@
 import React from "react";
 import { axiosWithAuth } from '../components/utils/axiosWithAuth';
-import { ButtonStyling } from './Form';
 import { Link } from 'react-router-dom';
+import { ButtonStyling } from './Form';
 import styled from "styled-components";
 
-const InputContainer = styled.div`
+export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,7 +14,7 @@ const InputContainer = styled.div`
   border-radius: 10px;
   background-color: indianred;
 `
-const InputStyling = styled.input`
+export const InputStyling = styled.input`
   width: 50%;
   height: 2rem;
   border-radius: 10px;
