@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Login from './components/Login';
 import Registration from './components/Registration';
 import Recipes from './components/Recipes';
 import Form from './components/Form';
-import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './components/PrivateRoute.js';
+import RecipeList from './components/RecipeList';
 import './App.css';
 
 function App() {
@@ -50,11 +51,14 @@ function App() {
     <Router>
       <main>
         <NavBar />
-        {/* <PrivateRoute exact path='recipes' component={RecipeForm} /> */}
-        <Route path='/login' component={Login} />
-        <Route path='/register' component={Registration} />
-        <Route path='/recipes' render={props => <Form {...props} addNewRecipe={addNewRecipe} /> } />
-        <Route path='/recipes' render={props => <Recipes {...props} recipe={recipe} /> } />
+        <Switch>
+          <Route path='/login' component={Login} />
+          <Route exact path="/" component={Login} />
+          <PrivateRoute exact path="/protected" component={RecipeList} />
+          <Route path='/register' component={Registration} />
+          <Route path='/recipes' render={props => <Form {...props} addNewRecipe={addNewRecipe} /> } />
+          <Route path='/recipes' render={props => <Recipes {...props} recipe={recipe} /> } />
+        </Switch>
       </main>
     </Router>
   );
