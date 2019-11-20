@@ -93,7 +93,7 @@ export const ButtonStyling = styled.button`
     }
 `
 
-const Form = props => {
+const AddRecipeForm = props => {
     const [recipe, setRecipe] = useState({ name: '', category: '', source: '', ingredients: '', instructions: '' })
 
     const handleChanges = event => {
@@ -118,7 +118,7 @@ const Form = props => {
                             type='text'
                             name='name'
                             placeholder='name'
-                            value={recipe.name}
+                            value={recipe.recipename}
                             onChange={handleChanges}
                             autoComplete='off'
                             border='none'
@@ -171,4 +171,4 @@ const Form = props => {
     )
 }
 
-export default Form;
+export default AddRecipeForm;

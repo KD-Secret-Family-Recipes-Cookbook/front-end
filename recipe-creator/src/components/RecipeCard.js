@@ -1,5 +1,4 @@
 import React from 'react';
-import Form from './AddRecipeForm';
 import styled from 'styled-components';
 
 const CardStyle = styled.div`

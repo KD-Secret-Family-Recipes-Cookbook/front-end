@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { axiosWithAuth } from './TestAuth';
 import RecipeCard from './RecipeCard';
 import SearchBar from './SearchBar';
+import AddRecipeForm from './AddRecipeForm';
 import styled from 'styled-components';
 
 const ListStyle = styled.div`
@@ -9,7 +10,7 @@ const ListStyle = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-auto-rows: auto;
   grid-gap: 20px;
-  grid-auto-flow: row;
+  grid-auto-flow: row;s
   background-color: darkseagreen;
   border: 2px solid grey;
   border-radius: 10px;
@@ -43,7 +44,6 @@ function RecipeList() {
 
   return (
     <section className='recipe-list'>
-      <h1>My Recipes</h1>
       <SearchBar handleInputChange={handleInputChange} />
       <ListStyle>
         {recipes.map((rec, index) => {
@@ -59,6 +59,7 @@ function RecipeList() {
           )
         })}
       </ListStyle>
+      <AddRecipeForm />
     </section>
   )
 }
