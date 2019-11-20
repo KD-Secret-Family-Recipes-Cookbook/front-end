@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const axiosWithAuth = () => {
-    // const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
     const clientId = 'lambda-client';
     const clientSecret = 'lambda-secret';
   

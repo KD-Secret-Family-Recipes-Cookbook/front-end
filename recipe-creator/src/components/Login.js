@@ -35,7 +35,7 @@ const RegisterLinkStyling = styled.div`
   outline: none;
 `
 
-function Login() {
+function Login(props) {
   const [values, setValues] = useState({
       username: '',
       password: ''
@@ -45,7 +45,11 @@ function Login() {
       e.preventDefault();
       axiosWithAuth()
         .post('/login', `grant_type=password&username=${values.username}&password=${values.password}`)
-        .then(res => console.log(res))
+        .then(res => {
+          console.log(res);
+          localStorage.setItem("token", res.data.token);
+          (props.history.push("/protected"))
+        })
         .catch(err => console.log(err.response))
   };
   return (
