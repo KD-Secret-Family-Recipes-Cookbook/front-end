@@ -20,6 +20,7 @@ const NavBar = () => {
             <NavLink to='/about'>About</NavLink>
             <NavLink to='/recipes'>My Recipes</NavLink>
             <NavLink to='/login'>Login</NavLink>
+            <NavLink to="/protected">Recipes</NavLink>
         </NavStyle>
     )
 }

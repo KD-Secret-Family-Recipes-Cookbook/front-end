@@ -22,7 +22,7 @@ class Login extends React.Component {
       e.preventDefault();
      
       axiosWithAuth()
-        .post('https://secretfamilyrecipescookbook.herokuapp.com/login', this.state.credentials)
+        .post('/login', this.state.credentials)
         .then(res => {
           localStorage.setItem('token', res.data.payload);
           // redirect to the apps main page?

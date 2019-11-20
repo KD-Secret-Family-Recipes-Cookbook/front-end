@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { axiosWithAuth } from '../components/utils/axiosWithAuth';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -35,85 +35,36 @@ const RegisterLinkStyling = styled.div`
   outline: none;
 `
 
-class Login extends React.Component {
-    state = {
-      credentials: {
-        username: '',
-        password: ''
-      }
-    };
-  
-    handleChange = e => {
-      this.setState({
-        credentials: {
-          ...this.state.credentials,
-          [e.target.name]: e.target.value
-        }
-      });
-    };
-  
-    login = e => {
+function Login() {
+  const [values, setValues] = useState({
+      username: '',
+      password: ''
+  });
+  const handleChange = ({target: {name, value}}) => setValues({...values, [name]: value});
+  const handleSubmit = e => {
       e.preventDefault();
-     
       axiosWithAuth()
-        .post('https://secretfamilyrecipescookbook.herokuapp.com/login', this.state.credentials)
-        .then(res => {
-          console.log(res);
-          localStorage.setItem('token', res.data.payload);
-          // redirect to the apps main page?
-          this.props.history.push('/protected');
-        })
-        .catch(err => console.log(err));
-    };
-
-    // handleSubmit = e => {
-    //   axios.post('http://localhost:3000/oauth/token', "grant_type=password&username=admin&password=password", {
-
-    //     headers: {
-    //       Authorization: 'Bearer 51668aa8-3c98-4b10-bc6f-25ff8234d4ea',
-    //       'Content-Type': 'application/x-www-form-urlencoded'
-    //     }
-    //   })
-    //   .then(response => console.log(response))
-    //   .catch(error => console.log(error));
-    //   e.preventDefault();
-    // }
-  
-    componentDidMount() {
-      this.setState({ isLoading: false })
-    }
-  
-    render() {
-      return (
-        <div>
-          <form onSubmit={this.login}>
-            <InputContainer>
-              <InputStyling
-                type="text"
-                name="username"
-                placeholder='username'
-                value={this.state.credentials.username}
-                onChange={this.handleChange}
-              />
-              <InputStyling
-                type="password"
-                name="password"
-                placeholder='password'
-                value={this.state.credentials.password}
-                onChange={this.handleChange}
-              />
-              <ButtonStyling>Log In</ButtonStyling>
-              <RegisterLinkStyling>
-                Not a member? <Link to='./register'>Register here!</Link>
-              </RegisterLinkStyling>
-            </InputContainer>
+        .post('/login', `grant_type=password&username=${values.username}&password=${values.password}`)
+        .then(res => console.log(res))
+        .catch(err => console.log(err.response))
+  };
+  return (
+      <>
+          <form onSubmit={handleSubmit}>
+              <label>Username: <input name='username' value={values.username} onChange={handleChange}/></label>
+              <label>Password: <input name='password' value={values.password} onChange={handleChange}/></label>
+              <button type='submit'>Submit</button>
           </form>
-        </div>
-      );
-    }
-  }
+      </>
+  )
+}
+export default Login;
+
+
+
+     
   
-  export default Login;
+//   export default Login;
   
 // import React, { useState, useEffect } from 'react';
 // import { withFormik, Form, Field } from 'formik';
