@@ -3,7 +3,7 @@ import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { InputContainer } from './Login';
-import { ButtonStyling } from './Form';
+import { ButtonStyling } from './AddRecipeForm';
 import styled from 'styled-components';
 
 const InputStyling = styled(Field)`

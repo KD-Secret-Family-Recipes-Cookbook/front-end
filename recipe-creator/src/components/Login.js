@@ -2,7 +2,7 @@ import React from "react";
 import { axiosWithAuth } from '../components/utils/axiosWithAuth';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { ButtonStyling } from './Form';
+import { ButtonStyling } from './AddRecipeForm';
 import styled from "styled-components";
 
 export const InputContainer = styled.div`

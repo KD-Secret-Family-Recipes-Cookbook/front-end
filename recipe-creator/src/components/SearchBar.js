@@ -1,34 +1,45 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const SearchStyle = styled.div`
-  display: flex;
-  justify-content: center;
-  margin: 2%;
+const SearchBarStyle = styled.input`
+    border-radius: 10px;
+    text-align: center;
+    width: 40%
+    height: 2rem;
+    font-size: 1.6rem;
+    margin: 0% 30%;
+    border: 1px solid grey;
+    outline: none;
 `
-const InputStyle = styled.input`
-  border-radius: 5px;
-  text-align: center;
-  max-width: 400px;
+const RowOneStyling = styled.input`
+    width: 28%;
+    height: 2rem;
+    border-radius: 10px;
+    font-size: 1.6rem;
+    padding: 1.5%;
+    border: 1px solid grey;
+    outline: none;
+  
+    &:focus {
+        outline: none;
+    }
 `
 
 function SearchBar(props) {
-  return (
-    <SearchStyle>
-      <section className='search-form'>
-        <form>
-          <InputStyle
-            type='text'
-            name='name'
-            placeholder='search by name'
-            autoComplete='off'
-            value={props.input}
-            onChange={props.handleInputChange}
-          />
-        </form>
-      </section>
-    </SearchStyle>
-  );
+    return (
+        <section className='search-form'>
+            <form>
+            <SearchBarStyle
+                type='text'
+                name='name'
+                placeholder='search by name'
+                autoComplete='off'
+                value={props.input}
+                onChange={props.handleInputChange}
+            />
+            </form>
+        </section>
+    );
 }
 
 export default SearchBar;
