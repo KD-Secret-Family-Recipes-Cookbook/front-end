@@ -15,3 +15,53 @@ code {
 a {
   text-decoration: none;
 }
+
+a:hover {
+  transition: all 500ms;
+  transform: scale(1.2);
+}
+
+/* #name {
+  width: 28%;
+  height: 2rem;
+  border-radius: 10px;
+  font-size: 1.6rem;
+  padding: 1.5%;
+  border: 1px solid grey;
+  outline: none;
+}
+
+#name:focus {
+  outline: none;
+  border: 2px solid green;
+} */
+
+/* #ingredients {
+  height: 5rem;
+  border-radius: 10px;
+  font-size: 1.6rem;
+  padding: 1.5%;
+  margin: 0% 1.5%;
+  border: 1px solid grey;
+  outline: none;
+}
+
+#ingredients:focus {
+  outline: none;
+  border: 2px solid green;
+} */
+
+/* #instructions {
+  height: 12rem;
+  border-radius: 10px;
+  font-size: 1.6rem;
+  padding: 1.5%;
+  margin: 3% 1.5% 0% 1.5%;
+  border: 1px solid grey;
+  outline: none;
+}
+
+#instructions:focus {
+  outline: none;
+  border: 2px solid green;
+} */
