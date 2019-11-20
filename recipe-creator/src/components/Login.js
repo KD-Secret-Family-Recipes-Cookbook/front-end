@@ -1,5 +1,6 @@
 import React from "react";
 import { axiosWithAuth } from '../components/utils/axiosWithAuth';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { ButtonStyling } from './Form';
 import styled from "styled-components";
@@ -14,7 +15,7 @@ export const InputContainer = styled.div`
   border-radius: 10px;
   background-color: indianred;
 `
-export const InputStyling = styled.input`
+const InputStyling = styled.input`
   width: 50%;
   height: 2rem;
   border-radius: 10px;
@@ -57,12 +58,26 @@ class Login extends React.Component {
       axiosWithAuth()
         .post('https://secretfamilyrecipescookbook.herokuapp.com/login', this.state.credentials)
         .then(res => {
+          console.log(res);
           localStorage.setItem('token', res.data.payload);
           // redirect to the apps main page?
           this.props.history.push('/protected');
         })
         .catch(err => console.log(err));
     };
+
+    // handleSubmit = e => {
+    //   axios.post('http://localhost:3000/oauth/token', "grant_type=password&username=admin&password=password", {
+
+    //     headers: {
+    //       Authorization: 'Bearer 51668aa8-3c98-4b10-bc6f-25ff8234d4ea',
+    //       'Content-Type': 'application/x-www-form-urlencoded'
+    //     }
+    //   })
+    //   .then(response => console.log(response))
+    //   .catch(error => console.log(error));
+    //   e.preventDefault();
+    // }
   
     componentDidMount() {
       this.setState({ isLoading: false })

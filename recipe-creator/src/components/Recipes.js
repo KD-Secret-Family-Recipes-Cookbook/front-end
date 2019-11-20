@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './Form.js';
-import styled from "styled-components";
+import SearchBar from './SearchBar';
+import styled from 'styled-components';
 
 const ListStyle = styled.div`
     display: grid;
@@ -21,9 +22,26 @@ const CardStyle = styled.div`
     background-color: whitesmoke;
 `
 
+// const editCard = document.querySelector('p');
+// console.log(editCard);
+// editCard.addEventListener('click', () => {
+//     console.log('works!');
+// })
+
+
+function handleEdit() {
+    console.log('working');
+    // document.body.style.backgroundColor='orange';
+    const p=document.querySelector('p');
+
+    p.textContent = <input type='text'></input>;
+}
+
+
 const Recipes = props => {
     return (
         <div className='recipe-list'>
+            <SearchBar />
             <ListStyle>
                 {props.recipe.map(recItem => (
                     <CardStyle key={recItem.id}>
@@ -31,6 +49,7 @@ const Recipes = props => {
                         <p>{recItem.category}</p>
                         <p>{recItem.ingredients}</p>
                         <p>{recItem.instructions}</p>
+                        <button type='edit' onClick={handleEdit}>Edit</button>
                     </CardStyle>
                 ))}
             </ListStyle>
