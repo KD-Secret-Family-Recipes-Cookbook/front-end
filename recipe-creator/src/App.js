@@ -4,6 +4,7 @@ import NavBar from './components/NavBar';
 import Login from './components/Login';
 import Registration from './components/Registration';
 import Recipes from './components/Recipes';
+import TestAxios from './components/TestAxios';
 // import Form from './components/Form';
 import PrivateRoute from './components/PrivateRoute.js';
 import RecipeList from './components/RecipeList';
@@ -54,6 +55,7 @@ function App() {
         <Switch>
           <Route path='/login' component={Login} />
           <Route exact path="/" component={Login} />
+          <Route path="/about" component={TestAxios} />
           <PrivateRoute exact path="/protected" component={RecipeList} />
           <Route path='/register' component={Registration} />
           {/* <Route path='/recipes' render={props => <Form {...props} addNewRecipe={addNewRecipe} /> } /> */}
