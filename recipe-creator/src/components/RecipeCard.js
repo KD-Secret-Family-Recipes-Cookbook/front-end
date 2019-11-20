@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Collapse, Card, CardBody } from 'reactstrap';
 import styled from 'styled-components';
 
 const CardStyle = styled.div`
@@ -23,12 +24,17 @@ const CardStyle = styled.div`
 // }
 
 const RecipeCard = props => {
+    const [isOpen, setIsOpen] = useState(false);
+    const toggle = () => setIsOpen(!isOpen);
+
     return (
-        <CardStyle key={props.id}>
+        <CardStyle key={props.id} onClick={toggle}>
             <h2>{`${props.source}'s ${props.name}`}</h2>
             <p>{props.category}</p>
             {/* <p>{props.ingredients}</p> */}
-            <p>{props.instructions}</p>
+            <Collapse isOpen={isOpen}>
+                <p>{props.instructions}</p>
+            </Collapse>
             {/* <button type='edit' onClick={handleEdit}>Edit</button> */}
         </CardStyle>
             // {/* <Form addNewRecipe={props.addNewRecipe} /> */}
