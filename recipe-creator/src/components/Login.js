@@ -1,5 +1,39 @@
 import React, {useState} from "react";
 import { axiosWithAuth } from '../components/utils/axiosWithAuth';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { ButtonStyling } from './AddRecipeForm';
+import styled from "styled-components";
+
+export const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+  border: 2px solid grey;
+  border-radius: 10px;
+  background-color: indianred;
+`
+const InputStyling = styled.input`
+  width: 50%;
+  height: 2rem;
+  border-radius: 10px;
+  font-size: 1.6rem;
+  padding: 1.5%;
+  border: 1px solid grey;
+  outline: none;
+  margin-top: 3%;
+  
+  &:focus {
+    outline: none;
+  }
+`
+const RegisterLinkStyling = styled.div`
+  font-size: 1.2rem;
+  margin-bottom: 3%;
+  outline: none;
+`
 
 function Login() {
   const [values, setValues] = useState({
@@ -26,62 +60,9 @@ function Login() {
 }
 export default Login;
 
-// class Login extends React.Component {
-//     state = {
-//       credentials: {
-//         username: '',
-//         password: ''
-//       }
-//     };
-  
-//     handleChange = e => {
-//       this.setState({
-//         credentials: {
-//           ...this.state.credentials,
-//           [e.target.name]: e.target.value
-//         }
-//       });
-//     };
-  
-//     login = e => {
-//       e.preventDefault();
+
+
      
-//       axios
-//         .post('https://secretfamilyrecipescookbook.herokuapp.com/login', this.state.credentials)
-//         .then(res => {
-//           localStorage.setItem('token', res.data.payload);
-          
-//           this.props.history.push('/protected');
-//         })
-//         .catch(err => console.log(err));
-//     };
-  
-//     componentDidMount() {
-//       this.setState({ isLoading: false })
-//     }
-  
-//     render() {
-//       return (
-//         <div>
-//           <form onSubmit={this.login}>
-//             <input
-//               type="text"
-//               name="username"
-//               value={this.state.credentials.username}
-//               onChange={this.handleChange}
-//             />
-//             <input
-//               type="password"
-//               name="password"
-//               value={this.state.credentials.password}
-//               onChange={this.handleChange}
-//             />
-//             <button>Log In</button>
-//           </form>
-//         </div>
-//       );
-//     }
-//   }
   
 //   export default Login;
   

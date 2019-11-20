@@ -6,17 +6,11 @@ const NavStyle = styled.nav`
   display: flex;
   justify-content: space-evenly;
   font-size: 2rem;
+  background-color: whitesmoke;
   border: 2px solid grey;
   border-radius: 10px;
   padding: 2%;
   margin: 3%;
-
-//   &:hover {
-//       background-color: black;
-//   }
-`
-const AStyle = styled.a`
-  text-decoration: none;
 `
 
 const NavBar = () => {

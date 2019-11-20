@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Login from './components/Login';
 import Registration from './components/Registration';
-import Recipes from './components/Recipes';
-// import Form from './components/Form';
+import RecipeCard from './components/RecipeCard';
+import TestAxios from './components/TestAxios';
+import AddRecipeForm from './components/AddRecipeForm';
 import PrivateRoute from './components/PrivateRoute.js';
 import RecipeList from './components/RecipeList';
 import './App.css';
@@ -56,8 +57,9 @@ function App() {
           <Route exact path="/" component={Login} />
           <PrivateRoute exact path="/protected" component={RecipeList} />
           <Route path='/register' component={Registration} />
-          {/* <Route path='/recipes' render={props => <Form {...props} addNewRecipe={addNewRecipe} /> } /> */}
-          <Route path='/recipes' render={props => <Recipes {...props} recipe={recipe} addNewRecipe={addNewRecipe}/> } />
+          {/* <Route path='/recipes' render={props => <AddRecipeForm {...props} addNewRecipe={addNewRecipe} /> } /> */}
+          <Route path="/recipes" component={RecipeList} />
+          {/* <Route path='/recipes' render={props => <RecipeList {...props} recipe={recipe} addNewRecipe={addNewRecipe}/> } /> */}
         </Switch>
       </main>
     </Router>
