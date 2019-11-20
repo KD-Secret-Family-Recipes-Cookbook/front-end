@@ -49,19 +49,21 @@ function Login() {
         .catch(err => console.log(err.response))
   };
   return (
-      <>
+      <div>
           <form onSubmit={handleSubmit}>
-              <label>Username: <input name='username' value={values.username} onChange={handleChange}/></label>
-              <label>Password: <input name='password' value={values.password} onChange={handleChange}/></label>
-              <button type='submit'>Submit</button>
+            <InputContainer>
+              <InputStyling name='username' value={values.username} placeholder='username' onChange={handleChange}/>
+              <InputStyling name='password' value={values.password} placeholder='password' onChange={handleChange}/>
+              <ButtonStyling type='submit'>Submit</ButtonStyling>
+              <RegisterLinkStyling>
+                Not a member? <Link to='./register'>Register here!</Link>
+              </RegisterLinkStyling>
+            </InputContainer>
           </form>
-      </>
+      </div>
   )
 }
 export default Login;
-
-
-
      
   
 //   export default Login;
