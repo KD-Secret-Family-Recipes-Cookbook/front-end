@@ -6,7 +6,7 @@ export const axiosWithAuth = () => {
         baseURL: 'https://secretfamilyrecipescookbook.herokuapp.com',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': `Bearer 173907f6-f085-4453-8d00-9decf80d2687`,
+            'Authorization': `${token}`,
         },
     });
 };
