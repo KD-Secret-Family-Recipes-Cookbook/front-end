@@ -1,64 +1,89 @@
-import React from "react";
+import React, {useState} from "react";
 import { axiosWithAuth } from '../components/utils/axiosWithAuth';
 
-class Login extends React.Component {
-    state = {
-      credentials: {
-        username: '',
-        password: ''
-      }
-    };
-  
-    handleChange = e => {
-      this.setState({
-        credentials: {
-          ...this.state.credentials,
-          [e.target.name]: e.target.value
-        }
-      });
-    };
-  
-    login = e => {
+function Login() {
+  const [values, setValues] = useState({
+      username: '',
+      password: ''
+  });
+  const handleChange = ({target: {name, value}}) => setValues({...values, [name]: value});
+  const handleSubmit = e => {
       e.preventDefault();
-     
       axiosWithAuth()
-        .post('https://secretfamilyrecipescookbook.herokuapp.com/login', this.state.credentials)
-        .then(res => {
-          localStorage.setItem('token', res.data.payload);
-          // redirect to the apps main page?
-          this.props.history.push('/protected');
-        })
-        .catch(err => console.log(err));
-    };
-  
-    componentDidMount() {
-      this.setState({ isLoading: false })
-    }
-  
-    render() {
-      return (
-        <div>
-          <form onSubmit={this.login}>
-            <input
-              type="text"
-              name="username"
-              value={this.state.credentials.username}
-              onChange={this.handleChange}
-            />
-            <input
-              type="password"
-              name="password"
-              value={this.state.credentials.password}
-              onChange={this.handleChange}
-            />
-            <button>Log In</button>
+        .post('/login', `grant_type=password&username=${values.username}&password=${values.password}`)
+        .then(res => console.log(res))
+        .catch(err => console.log(err.response))
+  };
+  return (
+      <>
+          <form onSubmit={handleSubmit}>
+              <label>Username: <input name='username' value={values.username} onChange={handleChange}/></label>
+              <label>Password: <input name='password' value={values.password} onChange={handleChange}/></label>
+              <button type='submit'>Submit</button>
           </form>
-        </div>
-      );
-    }
-  }
+      </>
+  )
+}
+export default Login;
+
+// class Login extends React.Component {
+//     state = {
+//       credentials: {
+//         username: '',
+//         password: ''
+//       }
+//     };
   
-  export default Login;
+//     handleChange = e => {
+//       this.setState({
+//         credentials: {
+//           ...this.state.credentials,
+//           [e.target.name]: e.target.value
+//         }
+//       });
+//     };
+  
+//     login = e => {
+//       e.preventDefault();
+     
+//       axios
+//         .post('https://secretfamilyrecipescookbook.herokuapp.com/login', this.state.credentials)
+//         .then(res => {
+//           localStorage.setItem('token', res.data.payload);
+          
+//           this.props.history.push('/protected');
+//         })
+//         .catch(err => console.log(err));
+//     };
+  
+//     componentDidMount() {
+//       this.setState({ isLoading: false })
+//     }
+  
+//     render() {
+//       return (
+//         <div>
+//           <form onSubmit={this.login}>
+//             <input
+//               type="text"
+//               name="username"
+//               value={this.state.credentials.username}
+//               onChange={this.handleChange}
+//             />
+//             <input
+//               type="password"
+//               name="password"
+//               value={this.state.credentials.password}
+//               onChange={this.handleChange}
+//             />
+//             <button>Log In</button>
+//           </form>
+//         </div>
+//       );
+//     }
+//   }
+  
+//   export default Login;
   
 // import React, { useState, useEffect } from 'react';
 // import { withFormik, Form, Field } from 'formik';
