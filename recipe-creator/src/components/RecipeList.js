@@ -20,6 +20,7 @@ const ListStyle = styled.div`
 
 function RecipeList() {
   const [recipes, setRecipes] = useState([]);
+  const [ingredients, setIngredients] = useState([]);
   const [input, setInput] = useState('');
   
   useEffect(() => {
@@ -31,6 +32,8 @@ function RecipeList() {
           rec.recipename.toLowerCase().includes(input.toLowerCase())
           )
           setRecipes(searchRecipe);
+          setIngredients(response.data.ingredients);
+          console.log(ingredients);
       })
       .catch(error => {
         console.log('Ya done goofed, kiddo', error);
@@ -60,6 +63,7 @@ function RecipeList() {
             />
           )
         })}
+        {/* {recipes.ingredients.map()} */}
       </ListStyle>
       <AddRecipeForm />
     </section>
