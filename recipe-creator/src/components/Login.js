@@ -47,8 +47,8 @@ function Login(props) {
         .post('/login', `grant_type=password&username=${values.username}&password=${values.password}`)
         .then(res => {
           console.log(res);
-          localStorage.setItem("token", res.data.token);
-          (props.history.push("/protected"))
+          localStorage.setItem("token", res.data.access_token);
+          (props.history.push("/recipes"))
         })
         .catch(err => console.log(err.response))
   };
