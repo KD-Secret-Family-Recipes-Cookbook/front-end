@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import {NavLink} from "react-router-dom";
-import { gsap, TweenMax, Linear } from 'gsap';
+import { TweenMax, Linear } from 'gsap';
 import styled from "styled-components";
 
 const NavStyle = styled.nav`

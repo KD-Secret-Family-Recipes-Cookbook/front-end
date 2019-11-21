@@ -54,65 +54,58 @@ function Login(props) {
         .catch(err => console.log(err.response))
   };
 
-  let userContainer = useRef(null);
-  let passwordContainer = useRef(null);
-  // useEffect(() => {
-  //   TweenMax.to(
-  //     userContainer,
-  //     1,
-  //     {
-  //       repeat:-1,
-  //       rotation: 360,
-  //       ease: Linear.easeNone
-  //     }
-  //   )
-  // }, [])
+  let userBox = useRef(null);
+  let passwordBox = useRef(null);
+  let submitBox = useRef(null);
+  let registerBox = useRef(null);
 
-  function bounce() {
-    gsap.to(userContainer, { 
-      duration: 2.5, ease: "elastic.out", x: "20%" 
-    });
-  }
+  useEffect(() => {
+    TweenMax.fromTo(userBox, 2, {
+      opacity: 0,
+      x: -130
+    },{
+      opacity: 1,
+      x: 0
+    })
 
-  function scaleUp() {
-    TweenMax.to(userContainer, 1, {
-      scale: 1.05,
-      ease: Linear.ease
-    });
-  }
+    TweenMax.fromTo(passwordBox, 1.5, {
+      opacity: 0,
+      x: -130
+    },{
+      opacity: 1,
+      x: 0
+    })
 
-function scaleDown() {
-    TweenMax.to(userContainer, 1, {
-      scale: 1.00
-    });
-  }
+    TweenMax.fromTo(submitBox, 1, {
+      opacity: 0,
+      x: -130
+    },{
+      opacity: 1,
+      x: 0
+    })
 
-  function scaleUp2() {
-    TweenMax.to(passwordContainer, 1, {
-      scale: 1.05,
-      ease: Linear.ease
-    });
-  }
-
-function scaleDown2() {
-    TweenMax.to(passwordContainer, 1, {
-      scale: 1.00
-    });
-  }
+    TweenMax.fromTo(registerBox, .5, {
+      opacity: 0,
+      x: -130
+    },{
+      opacity: 1,
+      x: 0
+    })
+  }, [])
 
   return (
-      <div>
-          <form onSubmit={handleSubmit}>
-            <InputContainer>
-              <InputStyling ref={e => (userContainer = e)} onMouseEnter={scaleUp} onMouseLeave={scaleDown} name='username' value={values.username} placeholder='username' onChange={handleChange}/>
-              <InputStyling ref={e => (passwordContainer = e)} onMouseEnter={scaleUp2} onMouseLeave={scaleDown2}name='password' value={values.password} placeholder='password' onChange={handleChange}/>
-              <ButtonStyling type='submit'>Submit</ButtonStyling>
-              <RegisterLinkStyling>
-                Not a member? <Link to='./register'>Register here!</Link>
-              </RegisterLinkStyling>
-            </InputContainer>
-          </form>
-      </div>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <InputContainer>
+          <InputStyling ref={e => (userBox = e)} name='username' value={values.username} placeholder='username' onChange={handleChange}/>
+          <InputStyling ref={e => (passwordBox = e)} name='password' value={values.password} placeholder='password' onChange={handleChange}/>
+          <ButtonStyling type='submit' ref={e => (submitBox = e)}>Submit</ButtonStyling>
+          <RegisterLinkStyling ref={e => (registerBox = e)}>
+            Not a member? <Link to='./register'>Register here!</Link>
+          </RegisterLinkStyling>
+        </InputContainer>
+      </form>
+    </div>
   )
 }
 export default Login;
