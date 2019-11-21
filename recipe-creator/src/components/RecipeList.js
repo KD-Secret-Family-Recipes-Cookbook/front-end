@@ -45,6 +45,8 @@ function RecipeList() {
     setInput(event.target.value);
   }
 
+  
+
   return (
     <section className='recipe-list'>
       <SearchBar handleInputChange={handleInputChange} />
@@ -60,6 +62,8 @@ function RecipeList() {
               category={rec.category}
               ingredients={rec.ingredients}
               instructions={rec.instructions}
+              recipes={recipes}
+              setRecipes={setRecipes}
             />
           )
         })}

@@ -48,7 +48,7 @@ function Login(props) {
         .then(res => {
           console.log(res);
           localStorage.setItem("token", res.data.access_token);
-          (props.history.push("/protected"))
+          (props.history.push("/recipes"))
         })
         .catch(err => console.log(err.response))
   };

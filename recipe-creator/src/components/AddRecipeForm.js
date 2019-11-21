@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from "styled-components";
+import { axiosWithAuth } from './TestAuth';
 
 const AddRecipeContainer = styled.div`
     border: 2px solid grey;
@@ -94,31 +95,58 @@ export const ButtonStyling = styled.button`
 `
 
 const AddRecipeForm = props => {
-    const [recipe, setRecipe] = useState({ name: '', category: '', source: '', ingredients: '', instructions: '' })
 
-    const handleChanges = event => {
-        setRecipe({ ...recipe, [event.target.name]: event.target.value })
-        // console.log(event.target.name);
-    }
+    const [ newRecipe, setNewRecipe ] = useState
+    ({
+        name: "",
+        category: "",
+        source: "",
+        ingredients: "",
+        instructions: "",
+        id: Date.now()
+    })
 
-    const submitForm = event => {
+    function addRecipe(event){
         event.preventDefault();
-        props.addNewRecipe(recipe);
-        setRecipe({name:'', category:'', source:'', ingredients:'', instructions:''})
-    }
+        axiosWithAuth()
+            .post("recipes/recipe", newRecipe)
+            .then(res => {
+                console.log(res)
+                props.history.push('/recipe')
+            })
+            .catch(err => console.log(err))
+
+            }
+
+            const handleChanges = event => {
+                event.preventDefault();
+                setNewRecipe({...newRecipe, [event.target.name]: event.target.value })
+            }
+    // const [recipe, setRecipe] = useState([{ name: '', category: '', source: '', ingredients: '', instructions: '' })
+
+    // const handleChanges = event => {
+    //     setRecipe({ ...recipe, [event.target.name]: event.target.value })
+    //     // console.log(event.target.name);
+    // }
+
+    // const submitForm = event => {
+    //     event.preventDefault();
+    //     props.addNewRecipe(recipe);
+    //     setRecipe({name:'', category:'', source:'', ingredients:'', instructions:''})
+    // }
 
     return (
         <AddRecipeContainer>
             <HeaderStyling>Add Recipe</HeaderStyling>
             <InputContainer>
-                <form onSubmit={submitForm}>
+                <form onSubmit={event => addRecipe(event)}>
                     <RecipeStyling>
                         <RowOneStyling
                             id='name'
                             type='text'
                             name='name'
                             placeholder='name'
-                            value={recipe.recipename}
+                            value={newRecipe.name}
                             onChange={handleChanges}
                             autoComplete='off'
                             border='none'
@@ -128,7 +156,7 @@ const AddRecipeForm = props => {
                             type='text'
                             name='category'
                             placeholder='category'
-                            value={recipe.category}
+                            value={newRecipe.category}
                             onChange={handleChanges}
                             autoComplete='off'
                         />
@@ -137,7 +165,7 @@ const AddRecipeForm = props => {
                             type='text'
                             name='source'
                             placeholder='source'
-                            value={recipe.source}
+                            value={newRecipe.source}
                             onChange={handleChanges}
                             autoComplete='off'
                         />
@@ -148,7 +176,7 @@ const AddRecipeForm = props => {
                             type='text'
                             name='ingredients'
                             placeholder='ingredients'
-                            value={recipe.ingredients}
+                            value={newRecipe.ingredients}
                             onChange={handleChanges}
                             autoComplete='off'
                         />
@@ -157,7 +185,7 @@ const AddRecipeForm = props => {
                             type='text'
                             name='instructions'
                             placeholder='instructions'
-                            value={recipe.instructions}
+                            value={newRecipe.instructions}
                             onChange={handleChanges}
                             autoComplete='off'
                         />

@@ -54,10 +54,11 @@ function App() {
         <NavBar />
         <Switch>
           <Route path='/login' component={Login} />
-          <Route exact path='/' component={Login} />
-          <PrivateRoute exact path='/protected' component={RecipeList} />
+          <Route exact path="/" component={Login} />
+          <PrivateRoute exact path="/recipes" component={RecipeList} />
+
           <Route path='/register' component={Registration} />
-          {/* <Route path='/recipes' render={props => <AddRecipeForm {...props} addNewRecipe={addNewRecipe} /> } /> */}
+          <Route path='/recipes' render={props => <AddRecipeForm {...props} addNewRecipe={addNewRecipe} /> } />
           <Route path="/recipes" component={RecipeList} />
           {/* <Route path='/recipes' render={props => <RecipeList {...props} recipe={recipe} addNewRecipe={addNewRecipe}/> } /> */}
         </Switch>
