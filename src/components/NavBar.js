@@ -7,8 +7,8 @@ const NavStyle = styled.nav`
   display: flex;
   justify-content: space-evenly;
   font-size: 2rem;
-  background-color: whitesmoke;
-  border: 2px solid grey;
+  background-color: #DEF2F1;
+  // border: 1px solid #DCDCDC;
   border-radius: 10px;
   padding: 2%;
   margin: 3%;

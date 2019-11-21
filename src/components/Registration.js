@@ -12,7 +12,7 @@ const InputStyling = styled(Field)`
   border-radius: 10px;
   font-size: 1.6rem;
   padding: 1.5%;
-  border: 1px solid grey;
+  border: 2px solid white;
   outline: none;
   margin-top: 3%;
   

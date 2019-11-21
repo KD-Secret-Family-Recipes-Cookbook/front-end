@@ -11,8 +11,7 @@ const ListStyle = styled.div`
   grid-auto-rows: auto;
   grid-gap: 20px;
   grid-auto-flow: rows;
-  background: darkseagreen;
-  border: 2px solid grey;
+  background: #3AAFA9;
   border-radius: 10px;
   padding: 5%;
   margin: 3%;

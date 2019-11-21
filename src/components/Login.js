@@ -11,9 +11,8 @@ export const InputContainer = styled.div`
   align-items: center;
   width: 80%;
   margin: auto;
-  border: 2px solid grey;
   border-radius: 10px;
-  background-color: indianred;
+  background-color: #3AAFA9;
 `
 const InputStyling = styled.input`
   width: 50%;
@@ -21,7 +20,7 @@ const InputStyling = styled.input`
   border-radius: 10px;
   font-size: 1.6rem;
   padding: 1.5%;
-  border: 1px solid grey;
+  border: 2px solid white;
   outline: none;
   margin-top: 3%;
   

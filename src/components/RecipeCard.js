@@ -4,13 +4,15 @@ import { axiosWithAuth } from './utils/axiosWithAuth';
 
 const CardStyle = styled.div`
     text-align: center;
-    border: 2px solid grey;
     border-radius: 10px;
     background-color: whitesmoke;
+    font-family: 'Lucida Casual', 'Comic Sans MS';
+    color: #22283A;
 `
-
 const ImageStyle = styled.img`
   width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 `
 
 // const editCard = document.querySelector('p');
@@ -75,13 +77,11 @@ const RecipeCard = props => {
 
 
     return (
-
         <CardStyle key={props.id} onClick={() => editRecipe(props.recipe)}>
             <div className='recipe-image'>
                 {/* <ImageStyle src={props.imageurl} alt='yummy foodz' /> */}
                 <ImageStyle src={'https://picsum.photos/200'} alt='yummy foodz' />
             </div>
-
             <h2>{`${props.source}'s ${props.name}`}</h2>
             <p>{props.category}</p>
             {/* <p>{props.ingredients}</p> */}

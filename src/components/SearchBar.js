@@ -7,22 +7,11 @@ const SearchBarStyle = styled.input`
     width: 40%
     height: 2rem;
     font-size: 1.6rem;
+    font-family: 'Lucida Casual', 'Comic Sans MS';
     margin: 0% 30%;
+    padding: 4px;
     border: 1px solid grey;
     outline: none;
-`
-const RowOneStyling = styled.input`
-    width: 28%;
-    height: 2rem;
-    border-radius: 10px;
-    font-size: 1.6rem;
-    padding: 1.5%;
-    border: 1px solid grey;
-    outline: none;
-  
-    &:focus {
-        outline: none;
-    }
 `
 
 function SearchBar(props) {

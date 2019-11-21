@@ -3,13 +3,9 @@ import styled from "styled-components";
 import { axiosWithAuth } from './TestAuth';
 
 const AddRecipeContainer = styled.div`
-    border: 2px solid grey;
     border-radius: 10px;
     margin: 3%;
-    background-color: indianred;
-`
-const HeaderStyling = styled.h1`
-    text-align: center;
+    background-color: #FFA500;
 `
 const InputContainer = styled.div`
     // border: 2px solid grey;
@@ -24,8 +20,10 @@ const RowOneStyling = styled.input`
     height: 2rem;
     border-radius: 10px;
     font-size: 1.6rem;
+    font-family: 'Lucida Casual', 'Comic Sans MS';
     padding: 1.5%;
-    border: 1px solid grey;
+    border: 1px solid white;
+    margin-top: 3%;
     outline: none;
   
     &:focus {
@@ -38,7 +36,8 @@ const RowTwoStyling = styled.textarea`
     font-size: 1.6rem;
     padding: 1.5%;
     margin: 0% 1.5%;
-    border: 1px solid grey;
+    font-family: 'Lucida Casual', 'Comic Sans MS';
+    border: 1px solid white;
     outline: none;
   
     &:focus {
@@ -49,9 +48,10 @@ const RowThreeStyling = styled.textarea`
     height: 12rem;
     border-radius: 10px;
     font-size: 1.6rem;
+    font-family: 'Lucida Casual', 'Comic Sans MS';
     padding: 1.5%;
     margin: 3% 1.5% 0% 1.5%;
-    border: 1px solid grey;
+    border: 1px solid white;
     outline: none;
   
     &:focus {
@@ -74,6 +74,7 @@ export const ButtonStyling = styled.button`
     margin: 3%;
     border-radius: 5px;
     font-size: 1.9rem;
+    font-family: 'Lucida Casual', 'Comic Sans MS';
     width: 200px;
     border: 2px solid #22283A;
     outline: none;
@@ -137,7 +138,6 @@ const AddRecipeForm = props => {
 
     return (
         <AddRecipeContainer>
-            <HeaderStyling>Add Recipe</HeaderStyling>
             <InputContainer>
                 <form onSubmit={event => addRecipe(event)}>
                     <RecipeStyling>

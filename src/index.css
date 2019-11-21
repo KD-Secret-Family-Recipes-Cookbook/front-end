@@ -14,6 +14,8 @@ code {
 
 a {
   text-decoration: none;
+  font-family: 'Lucida Casual', 'Comic Sans MS';
+  color: #22283A;
 }
 
 /* a:hover {
