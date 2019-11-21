@@ -16,10 +16,10 @@ a {
   text-decoration: none;
 }
 
-a:hover {
+/* a:hover {
   transition: all 500ms;
   transform: scale(1.2);
-}
+} */
 
 /* #name {
   width: 28%;
