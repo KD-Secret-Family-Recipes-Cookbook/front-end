@@ -8,6 +8,10 @@ const CardStyle = styled.div`
     background-color: whitesmoke;
 `
 
+const ImageStyle = styled.img`
+  width: 100%;
+`
+
 // const editCard = document.querySelector('p');
 // console.log(editCard);
 // editCard.addEventListener('click', () => {
@@ -25,6 +29,10 @@ const CardStyle = styled.div`
 const RecipeCard = props => {
     return (
         <CardStyle key={props.id}>
+            <div className='recipe-image'>
+                {/* <ImageStyle src={props.imageurl} alt='yummy foodz' /> */}
+                <ImageStyle src={'https://picsum.photos/200'} alt='yummy foodz' />
+            </div>
             <h2>{`${props.source}'s ${props.name}`}</h2>
             <p>{props.category}</p>
             {/* <p>{props.ingredients}</p> */}
