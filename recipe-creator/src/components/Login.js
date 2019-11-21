@@ -1,9 +1,8 @@
 import React, {useState, useEffect, useRef} from "react";
 import { axiosWithAuth } from '../components/utils/axiosWithAuth';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { ButtonStyling } from './AddRecipeForm';
-import { gsap, TweenMax, Linear } from 'gsap';
+import { TweenMax } from 'gsap';
 import styled from "styled-components";
 
 export const InputContainer = styled.div`
