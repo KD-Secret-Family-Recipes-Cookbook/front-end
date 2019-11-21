@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from "react";
 import { axiosWithAuth } from '../components/utils/axiosWithAuth';
 import { Link } from 'react-router-dom';
 import { ButtonStyling } from './AddRecipeForm';
-import { TweenMax } from 'gsap';
+import { gsap } from 'gsap';
 import styled from "styled-components";
 
 export const InputContainer = styled.div`
@@ -19,6 +19,7 @@ const InputStyling = styled.input`
   height: 2rem;
   border-radius: 10px;
   font-size: 1.6rem;
+  font-family: 'Lucida Casual', 'Comic Sans MS';
   padding: 1.5%;
   border: 2px solid white;
   outline: none;
@@ -58,7 +59,7 @@ function Login(props) {
   let registerBox = useRef(null);
 
   useEffect(() => {
-    TweenMax.fromTo(userBox, 2, {
+    gsap.fromTo(userBox, 2, {
       opacity: 0,
       x: -130
     },{
@@ -66,7 +67,7 @@ function Login(props) {
       x: 0
     })
 
-    TweenMax.fromTo(passwordBox, 1.5, {
+    gsap.fromTo(passwordBox, 1.5, {
       opacity: 0,
       x: -130
     },{
@@ -74,7 +75,7 @@ function Login(props) {
       x: 0
     })
 
-    TweenMax.fromTo(submitBox, 1, {
+    gsap.fromTo(submitBox, 1, {
       opacity: 0,
       x: -130
     },{
@@ -82,7 +83,7 @@ function Login(props) {
       x: 0
     })
 
-    TweenMax.fromTo(registerBox, .5, {
+    gsap.fromTo(registerBox, .5, {
       opacity: 0,
       x: -130
     },{
