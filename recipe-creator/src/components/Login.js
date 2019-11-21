@@ -1,8 +1,9 @@
-import React, {useState} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import { axiosWithAuth } from '../components/utils/axiosWithAuth';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { ButtonStyling } from './AddRecipeForm';
+import { gsap, TweenMax, Linear } from 'gsap';
 import styled from "styled-components";
 
 export const InputContainer = styled.div`
@@ -52,12 +53,59 @@ function Login(props) {
         })
         .catch(err => console.log(err.response))
   };
+
+  let userContainer = useRef(null);
+  let passwordContainer = useRef(null);
+  // useEffect(() => {
+  //   TweenMax.to(
+  //     userContainer,
+  //     1,
+  //     {
+  //       repeat:-1,
+  //       rotation: 360,
+  //       ease: Linear.easeNone
+  //     }
+  //   )
+  // }, [])
+
+  function bounce() {
+    gsap.to(userContainer, { 
+      duration: 2.5, ease: "elastic.out", x: "20%" 
+    });
+  }
+
+  function scaleUp() {
+    TweenMax.to(userContainer, 1, {
+      scale: 1.05,
+      ease: Linear.ease
+    });
+  }
+
+function scaleDown() {
+    TweenMax.to(userContainer, 1, {
+      scale: 1.00
+    });
+  }
+
+  function scaleUp2() {
+    TweenMax.to(passwordContainer, 1, {
+      scale: 1.05,
+      ease: Linear.ease
+    });
+  }
+
+function scaleDown2() {
+    TweenMax.to(passwordContainer, 1, {
+      scale: 1.00
+    });
+  }
+
   return (
       <div>
           <form onSubmit={handleSubmit}>
             <InputContainer>
-              <InputStyling name='username' value={values.username} placeholder='username' onChange={handleChange}/>
-              <InputStyling name='password' value={values.password} placeholder='password' onChange={handleChange}/>
+              <InputStyling ref={e => (userContainer = e)} onMouseEnter={scaleUp} onMouseLeave={scaleDown} name='username' value={values.username} placeholder='username' onChange={handleChange}/>
+              <InputStyling ref={e => (passwordContainer = e)} onMouseEnter={scaleUp2} onMouseLeave={scaleDown2}name='password' value={values.password} placeholder='password' onChange={handleChange}/>
               <ButtonStyling type='submit'>Submit</ButtonStyling>
               <RegisterLinkStyling>
                 Not a member? <Link to='./register'>Register here!</Link>

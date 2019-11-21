@@ -28,9 +28,9 @@ function Registration({ values, errors, touched, status }) {
         <InputContainer>
           <InputStyling type='text' name='username' placeholder='username' autoComplete='off' />
           {touched.username && errors.username && <p>{errors.username}</p>}
-          <InputStyling type='text' name='email' placeholder='Email' autoComplete='off' />
+          <InputStyling type='text' name='email' placeholder='email' autoComplete='off' />
           {touched.email && errors.email && <p>{errors.email}</p>}
-          <InputStyling type='password' name='password' placeholder='Password' autoComplete='off' />
+          <InputStyling type='password' name='password' placeholder='password' autoComplete='off' />
           {touched.password && errors.password && <p>{errors.password}</p>}
           <InputStyling type='checkbox' name='terms' checked={values.terms} autoComplete='off'/>Terms of Service
           {touched.terms && errors.terms && <p>{errors.terms}</p>}
