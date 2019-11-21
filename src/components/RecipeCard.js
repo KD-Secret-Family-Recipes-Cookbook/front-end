@@ -74,7 +74,11 @@ const RecipeCard = props => {
                 console.log(err)
             })
     };
-
+    let spice
+    props.ingredientname.map((ing) => {
+        console.log(ing.ingredientname);
+        spice = ing.ingredientname;
+    })
 
     return (
         <CardStyle key={props.id} onClick={() => editRecipe(props.recipe)}>
@@ -84,7 +88,7 @@ const RecipeCard = props => {
             </div>
             <h2>{`${props.source}'s ${props.name}`}</h2>
             <p>{props.category}</p>
-            {/* <p>{props.ingredients}</p> */}
+            <p>{spice}</p>
             <p>{props.instructions}</p>
             <span>
                 <span className="delete" onClick={e => {
