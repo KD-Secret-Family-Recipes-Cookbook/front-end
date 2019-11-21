@@ -10,8 +10,8 @@ const ListStyle = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-auto-rows: auto;
   grid-gap: 20px;
-  grid-auto-flow: row;s
-  background-color: darkseagreen;
+  grid-auto-flow: rows;
+  background: darkseagreen;
   border: 2px solid grey;
   border-radius: 10px;
   padding: 5%;
@@ -20,6 +20,7 @@ const ListStyle = styled.div`
 
 function RecipeList() {
   const [recipes, setRecipes] = useState([]);
+  const [ingredients, setIngredients] = useState([]);
   const [input, setInput] = useState('');
   
   useEffect(() => {
@@ -31,6 +32,8 @@ function RecipeList() {
           rec.recipename.toLowerCase().includes(input.toLowerCase())
           )
           setRecipes(searchRecipe);
+          setIngredients(response.data.ingredients);
+          console.log(ingredients);
       })
       .catch(error => {
         console.log('Ya done goofed, kiddo', error);
@@ -47,17 +50,20 @@ function RecipeList() {
       <SearchBar handleInputChange={handleInputChange} />
       <ListStyle>
         {recipes.map((rec, index) => {
+          console.log(rec.ingredients);
           return (
             <RecipeCard
               key={index}
+              imageurl={rec.imgurl}
               name={rec.recipename}
               source={rec.source}
               category={rec.category}
-              // ingredients={rec.ingredients}
+              ingredients={rec.ingredients}
               instructions={rec.instructions}
             />
           )
         })}
+        {/* {recipes.ingredients.map()} */}
       </ListStyle>
       <AddRecipeForm />
     </section>
