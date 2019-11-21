@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import { axiosWithAuth } from '../components/utils/axiosWithAuth';
 import { axiosWithAuth } from './TestAuth';
 import RecipeCard from './RecipeCard';
 import SearchBar from './SearchBar';

@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import { axiosWithAuth } from '../components/utils/axiosWithAuth';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { ButtonStyling } from './AddRecipeForm';
+import { TweenMax } from 'gsap';
 import styled from "styled-components";
 
 export const InputContainer = styled.div`
@@ -52,19 +52,59 @@ function Login(props) {
         })
         .catch(err => console.log(err.response))
   };
+
+  let userBox = useRef(null);
+  let passwordBox = useRef(null);
+  let submitBox = useRef(null);
+  let registerBox = useRef(null);
+
+  useEffect(() => {
+    TweenMax.fromTo(userBox, 2, {
+      opacity: 0,
+      x: -130
+    },{
+      opacity: 1,
+      x: 0
+    })
+
+    TweenMax.fromTo(passwordBox, 1.5, {
+      opacity: 0,
+      x: -130
+    },{
+      opacity: 1,
+      x: 0
+    })
+
+    TweenMax.fromTo(submitBox, 1, {
+      opacity: 0,
+      x: -130
+    },{
+      opacity: 1,
+      x: 0
+    })
+
+    TweenMax.fromTo(registerBox, .5, {
+      opacity: 0,
+      x: -130
+    },{
+      opacity: 1,
+      x: 0
+    })
+  }, [])
+
   return (
-      <div>
-          <form onSubmit={handleSubmit}>
-            <InputContainer>
-              <InputStyling name='username' value={values.username} placeholder='username' onChange={handleChange}/>
-              <InputStyling name='password' value={values.password} placeholder='password' onChange={handleChange}/>
-              <ButtonStyling type='submit'>Submit</ButtonStyling>
-              <RegisterLinkStyling>
-                Not a member? <Link to='./register'>Register here!</Link>
-              </RegisterLinkStyling>
-            </InputContainer>
-          </form>
-      </div>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <InputContainer>
+          <InputStyling ref={e => (userBox = e)} name='username' value={values.username} placeholder='username' onChange={handleChange}/>
+          <InputStyling ref={e => (passwordBox = e)} name='password' value={values.password} placeholder='password' onChange={handleChange}/>
+          <ButtonStyling type='submit' ref={e => (submitBox = e)}>Submit</ButtonStyling>
+          <RegisterLinkStyling ref={e => (registerBox = e)}>
+            Not a member? <Link to='./register'>Register here!</Link>
+          </RegisterLinkStyling>
+        </InputContainer>
+      </form>
+    </div>
   )
 }
 export default Login;
