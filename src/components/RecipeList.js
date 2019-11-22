@@ -25,14 +25,12 @@ function RecipeList() {
   useEffect(() => {
     axiosWithAuth().get('/recipes/recipes')
       .then(response => {
-        console.log(response.data);
+        console.log(response.data[0].ingredients);
         // setRecipes(response.data);
         const searchRecipe = response.data.filter(rec =>
           rec.recipename.toLowerCase().includes(input.toLowerCase())
           )
           setRecipes(searchRecipe);
-          setIngredients(response.data.ingredients);
-          console.log(ingredients);
       })
       .catch(error => {
         console.log('Ya done goofed, kiddo', error);
@@ -44,14 +42,15 @@ function RecipeList() {
     setInput(event.target.value);
   }
 
-  
-
   return (
     <section className='recipe-list'>
       <SearchBar handleInputChange={handleInputChange} />
       <ListStyle>
         {recipes.map((rec, index) => {
-          console.log(rec.ingredients);
+          // console.log(rec.ingredients);
+          // rec.ingredients.map((ing) => {
+          //   // console.log();
+          // })
           return (
             <RecipeCard
               key={index}
@@ -59,13 +58,16 @@ function RecipeList() {
               name={rec.recipename}
               source={rec.source}
               category={rec.category}
-              ingredients={rec.ingredients}
+              ingredientname={rec.ingredients}
               instructions={rec.instructions}
               recipes={recipes}
               setRecipes={setRecipes}
             />
           )
         })}
+        {/* {rec.ingredients.map((ing, index) => {
+          console.log(ing);
+        })} */}
         {/* {recipes.ingredients.map()} */}
       </ListStyle>
       <AddRecipeForm />
